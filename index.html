@@ -341,7 +341,8 @@
         <ul>
           <li><strong>Avatar Name:</strong> A game nickname you choose yourself. This is not your real name and is stored only on your device.</li>
           <li><strong>Avatar Selection:</strong> The emoji avatar you choose for your in-game character. Stored locally on device only.</li>
-          <li><strong>Game Session Code (Online Mode):</strong> A temporary 6-character code generated to connect players. This code expires when the game ends or within 24 hours.</li>
+          <li><strong>Game Session Code (Online Mode &amp; Custom Game Mode):</strong> A temporary 6-character code generated to connect players. This code expires when the game ends or within 24 hours.</li>
+          <li><strong>Custom Game Mode (Hot Seat):</strong> When playing Custom Game on a single device, no additional data is collected. Players simply pass the device between turns. No data is transmitted off-device in this configuration.</li>
           <li><strong>In-Game Score History:</strong> Running game scores stored temporarily in memory only. This data is cleared automatically when you close the app.</li>
           <li><strong>App Preferences:</strong> Settings such as dark/light mode preference, stored locally using Apple's AppStorage on your device only.</li>
         </ul>
@@ -358,13 +359,13 @@
         <h2>Online Multiplayer & Firebase</h2>
       </div>
       <div class="card">
-        <p>When you choose to play in Online Mode, The Shady Spade uses <strong>Google Firebase</strong> solely to facilitate real-time game sessions between players. Here is what this means:</p>
+        <p>When you choose to play in Online Mode or Custom Game Mode with remote players, The Shady Spade uses <strong>Google Firebase</strong> solely to facilitate real-time game sessions between players. Here is what this means:</p>
         <ul>
           <li>Firebase is used only to synchronise game state (cards played, scores, turn order) between players in the same session.</li>
           <li>Only your chosen <strong>avatar name</strong> and <strong>game actions</strong> are transmitted — never personal information.</li>
           <li>All session data is deleted from Firebase servers when the game session ends.</li>
           <li>Firebase may collect anonymous technical data such as crash reports and performance metrics as described in <a href="https://firebase.google.com/support/privacy" style="color: var(--gold);">Google's Privacy Policy</a>.</li>
-          <li>If you play in Solo Mode only, Firebase is never used.</li>
+          <li>If you play in Solo Mode or Custom Game on a single device (hot seat), Firebase is never used.</li>
         </ul>
       </div>
     </section>
@@ -430,10 +431,27 @@
       </div>
     </section>
 
-    <!-- Section 8 -->
+    <!-- Section 8 - Game Modes -->
     <section>
       <div class="section-header">
         <div class="section-number">8</div>
+        <h2>Game Modes &amp; Data</h2>
+      </div>
+      <div class="card">
+        <p>The Shady Spade offers three game modes, each with different data implications:</p>
+        <ul>
+          <li><strong>Solo Mode:</strong> Play against 5 AI opponents entirely on your device. No data leaves your device. No internet connection required.</li>
+          <li><strong>Online Mode:</strong> Play with 6 real players over the internet. Firebase syncs game state using only avatar names and game actions — no personal data.</li>
+          <li><strong>Custom Game (Hot Seat):</strong> Multiple humans share one device, passing it between turns. Completely private — no data leaves your device.</li>
+          <li><strong>Custom Game (Online):</strong> Mix of human and AI players connecting remotely via session code. Same Firebase usage as Online Mode applies.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 9 -->
+    <section>
+      <div class="section-header">
+        <div class="section-number">9</div>
         <h2>Your Rights</h2>
       </div>
       <div class="card">
@@ -441,7 +459,7 @@
         <ul>
           <li>You can change your avatar name and avatar at any time within the app</li>
           <li>You can delete all app data by uninstalling The Shady Spade from your device</li>
-          <li>You can play in Solo Mode at any time without any data leaving your device</li>
+          <li>You can play in Solo Mode or Custom Game (hot seat) at any time without any data leaving your device</li>
         </ul>
       </div>
     </section>
