@@ -3,54 +3,7 @@ include:
 
 defaults:
   - scope:
-      path: ".well-known"
+      path: ".well-known/apple-app-site-association"
     values:
       layout: null
-
-plugins: []
-```
-
-5. Click **Commit changes**
-
----
-
-**That alone may not fix the content-type. Also do this:**
-
-1. Go to the `.well-known` folder in your repo
-2. Click on `apple-app-site-association`
-3. Click the **pencil icon** to edit
-4. Rename the file by changing the filename at the top to:
-```
-apple-app-site-association.json
-```
-5. Click **Commit changes**
-
-Then test this URL:
-```
-https://imvijaygoyal1.github.io/shadyspade-privacy/.well-known/apple-app-site-association.json
-```
-
----
-
-**Then update Xcode Associated Domains** to tell Apple to look for the `.json` version. Paste this into Claude Code:
-```
-In the Xcode project, find the Associated Domains capability.
-Update the applinks entry to:
-applinks:imvijaygoyal1.github.io
-
-Also update handleIncomingURL in ShadySpadeApp.swift.
-The apple-app-site-association file is now at:
-https://imvijaygoyal1.github.io/shadyspade-privacy/.well-known/apple-app-site-association.json
-
-No code change needed — Apple automatically checks both
-apple-app-site-association and apple-app-site-association.json
-The Associated Domains entry stays the same.
-```
-
----
-
-**Verify it works:**
-
-Open this in Safari on your Mac:
-```
-https://imvijaygoyal1.github.io/shadyspade-privacy/.well-known/apple-app-site-association.json
+      sitemap: false
