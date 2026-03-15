@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["7B5U5LACV3.com.vijaygoyal.shadyspade"],
+        "appIDs": ["TEAMID.com.vijaygoyal.shadyspade"],
         "components": [
           { "/": "/shadyspade/join/*" }
         ]
