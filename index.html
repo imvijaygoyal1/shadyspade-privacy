@@ -28,7 +28,6 @@
       min-height: 100vh;
     }
 
-    /* Background texture */
     body::before {
       content: '';
       position: fixed;
@@ -48,7 +47,6 @@
       z-index: 1;
     }
 
-    /* Header */
     header {
       text-align: center;
       padding: 64px 0 48px;
@@ -91,7 +89,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Summary banner */
     .summary-banner {
       background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(107,33,168,0.08));
       border: 1px solid rgba(201,168,76,0.25);
@@ -149,10 +146,7 @@
       margin-bottom: 2px;
     }
 
-    /* Sections */
-    section {
-      margin-bottom: 44px;
-    }
+    section { margin-bottom: 44px; }
 
     .section-header {
       display: flex;
@@ -198,10 +192,7 @@
 
     p:last-child { margin-bottom: 0; }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+    ul { list-style: none; padding: 0; }
 
     ul li {
       color: var(--text-secondary);
@@ -226,7 +217,6 @@
 
     strong { color: var(--text-primary); font-weight: 500; }
 
-    /* Highlight box */
     .highlight {
       background: rgba(21, 128, 61, 0.1);
       border: 1px solid rgba(21,128,61,0.3);
@@ -241,7 +231,6 @@
       font-size: 14px;
     }
 
-    /* Contact */
     .contact-card {
       background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
       border: 1px solid rgba(201,168,76,0.2);
@@ -250,18 +239,14 @@
       text-align: center;
     }
 
-    .contact-card p {
-      margin-bottom: 8px;
-    }
+    .contact-card p { margin-bottom: 8px; }
 
-    /* Divider */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--dark-border), transparent);
       margin: 48px 0;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding-top: 32px;
@@ -291,7 +276,7 @@
       <span class="spade-icon">♠</span>
       <h1>Privacy Policy</h1>
       <p class="subtitle">The Shady Spade — Card Game App</p>
-      <span class="last-updated">Last Updated: March 17, 2026</span>
+      <span class="last-updated">Last Updated: March 20, 2026</span>
     </header>
 
     <!-- Quick Summary -->
@@ -312,8 +297,8 @@
           <p><strong>No Data Sold</strong>We never sell, share, or monetize any information.</p>
         </div>
         <div class="summary-item">
-          <span class="icon">🗑️</span>
-          <p><strong>Session Only</strong>Game history clears when you close the app.</p>
+          <span class="icon">🏆</span>
+          <p><strong>Leaderboard Optional</strong>Only your chosen game name and stats appear on the global leaderboard.</p>
         </div>
       </div>
     </div>
@@ -326,7 +311,7 @@
       </div>
       <div class="card">
         <p>The Shady Spade is a 6-player card game application developed for iOS. This Privacy Policy explains how the app handles information when you use it. By downloading or playing The Shady Spade, you agree to the practices described in this policy.</p>
-        <p>This app is designed with privacy as a core principle — we collect as little information as possible and keep what we do use on your device.</p>
+        <p>This app is designed with privacy as a core principle — we collect as little information as possible and keep what we do use on your device wherever possible.</p>
       </div>
     </section>
 
@@ -339,16 +324,17 @@
       <div class="card">
         <p>The Shady Spade is designed to be played without providing any personal information. Here is everything the app may collect:</p>
         <ul>
-          <li><strong>Avatar Name:</strong> A game nickname you choose yourself. This is not your real name and is stored only on your device.</li>
-          <li><strong>Avatar Selection:</strong> Your chosen avatar (emoji or AI character image) is stored locally on your device. AI character avatar images are bundled with the app and are not downloaded from the internet.</li>
-          <li><strong>Game Session Code (Online Mode &amp; Custom Game Mode):</strong> A temporary 6-character code generated to connect players. This code expires when the game ends or within 24 hours.</li>
-          <li><strong>Custom Game Mode (Hot Seat):</strong> When playing Custom Game on a single device, no additional data is collected. Players simply pass the device between turns. No data is transmitted off-device in this configuration.</li>
-          <li><strong>Game History:</strong> Game score history for the last 10 games per player is stored locally on your device using UserDefaults. This data never leaves your device and is deleted when you uninstall the app.</li>
-          <li><strong>App Preferences:</strong> Settings such as dark/light mode preference, stored locally using Apple's AppStorage on your device only.</li>
-          <li><strong>URL Scheme (shadyspade://):</strong> The app registers the <code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">shadyspade://</code> URL scheme on your device to enable QR code joining for multiplayer games. No data is transmitted via this URL scheme beyond the room code.</li>
+          <li><strong>Avatar Name:</strong> A game nickname you choose yourself. This is not your real name. It is stored locally on your device and used on the global leaderboard if you complete a game.</li>
+          <li><strong>Avatar Selection:</strong> Your chosen avatar (emoji character) is stored locally on your device.</li>
+          <li><strong>Game Session Code (Online &amp; Multiplayer Mode):</strong> A temporary 6-character code generated to connect players. This code expires when the game ends or within 24 hours.</li>
+          <li><strong>Game History:</strong> Game score history for the last 10 games is stored locally on your device. This data never leaves your device and is deleted when you uninstall the app.</li>
+          <li><strong>Global Leaderboard:</strong> When a game completes, your chosen avatar name, wins, games played, bid history, and scores are stored on Firebase Firestore servers to power the global leaderboard. This data is associated with your avatar name only — not your real name or any personal identifier.</li>
+          <li><strong>Anonymous Device Token:</strong> The app uses Firebase Anonymous Authentication to secure leaderboard writes. A silent anonymous token is created on your device on first launch — no email, phone number, or personal information is required or collected.</li>
+          <li><strong>App Preferences:</strong> Settings such as theme preference are stored locally using Apple's AppStorage on your device only.</li>
+          <li><strong>URL Scheme (shadyspade://):</strong> The app registers the <code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">shadyspade://</code> URL scheme to enable QR code joining for multiplayer games. No data is transmitted via this URL scheme beyond the room code.</li>
         </ul>
         <div class="highlight">
-          <p>✅ We do <strong>not</strong> collect your name, email address, phone number, location, contacts, photos, or any other personal data.</p>
+          <p>✅ We do <strong>not</strong> collect your real name, email address, phone number, location, contacts, photos, or any other personal data. Only your chosen in-game avatar name is used.</p>
         </div>
       </div>
     </section>
@@ -357,17 +343,18 @@
     <section>
       <div class="section-header">
         <div class="section-number">3</div>
-        <h2>Online Multiplayer & Firebase</h2>
+        <h2>Online Multiplayer, Leaderboard &amp; Firebase</h2>
       </div>
       <div class="card">
-        <p>When you choose to play in Online Mode or Custom Game Mode with remote players, The Shady Spade uses <strong>Google Firebase</strong> solely to facilitate real-time game sessions between players. Here is what this means:</p>
+        <p>The Shady Spade uses <strong>Google Firebase</strong> for two purposes: real-time game sessions and the global leaderboard.</p>
         <ul>
-          <li>Firebase is used only to synchronise game state (cards played, scores, turn order) between players in the same session.</li>
+          <li>Firebase is used to synchronise game state (cards played, scores, turn order) between players in the same session.</li>
           <li>Only your chosen <strong>avatar name</strong> and <strong>game actions</strong> are transmitted — never personal information.</li>
           <li>All session data is deleted from Firebase servers when the game session ends.</li>
           <li>Firebase may collect anonymous technical data such as crash reports and performance metrics as described in <a href="https://firebase.google.com/support/privacy" style="color: var(--gold);">Google's Privacy Policy</a>.</li>
-          <li>If you play in Solo Mode or Custom Game on a single device (hot seat), Firebase is never used.</li>
+          <li>If you play in Solo Mode on a single device, Firebase is not used for game sync — however Firebase records leaderboard stats at game end in all modes.</li>
         </ul>
+        <p style="margin-top: 16px;">When a game completes, game result data is processed by <strong>Google Cloud Functions</strong> (us-central1 region) to validate scores server-side before writing to the leaderboard. This uses your avatar name, bid amount, and round results only. No personal data is transmitted.</p>
       </div>
     </section>
 
@@ -382,8 +369,9 @@
         <ul>
           <li>Displaying your chosen avatar name and emoji during gameplay</li>
           <li>Connecting you to an online game session when you enter or share a session code</li>
-          <li>Remembering your app preferences (such as dark or light mode) between sessions</li>
+          <li>Remembering your app preferences between sessions</li>
           <li>Tracking scores within the current game session</li>
+          <li>Displaying your game statistics on the global leaderboard</li>
         </ul>
         <p>We do <strong>not</strong> use any information for advertising, analytics, profiling, or any purpose other than making the game work.</p>
       </div>
@@ -393,12 +381,13 @@
     <section>
       <div class="section-header">
         <div class="section-number">5</div>
-        <h2>Data Sharing & Third Parties</h2>
+        <h2>Data Sharing &amp; Third Parties</h2>
       </div>
       <div class="card">
-        <p>We do not sell, rent, trade, or share your information with any third parties for commercial purposes. The only third-party service used is:</p>
+        <p>We do not sell, rent, trade, or share your information with any third parties for commercial purposes. The only third-party services used are:</p>
         <ul>
-          <li><strong>Google Firebase</strong> — for online multiplayer synchronisation only, as described in Section 3.</li>
+          <li><strong>Google Firebase</strong> — for online multiplayer synchronisation and leaderboard data storage, as described in Section 3.</li>
+          <li><strong>Google Cloud Functions</strong> — processes game results server-side to validate and record leaderboard data. Operated by Google LLC under the same Firebase privacy terms.</li>
         </ul>
         <p>We do not integrate advertising networks, social media trackers, analytics platforms, or any other data-collecting third-party services.</p>
       </div>
@@ -420,31 +409,33 @@
     <section>
       <div class="section-header">
         <div class="section-number">7</div>
-        <h2>Data Storage & Retention</h2>
+        <h2>Data Storage &amp; Retention</h2>
       </div>
       <div class="card">
         <ul>
           <li><strong>Avatar name and preferences</strong> are stored locally on your device using Apple's AppStorage and persist until you delete the app.</li>
           <li><strong>Game session data</strong> (scores, cards played) is held in memory only and is automatically erased when the app is closed.</li>
           <li><strong>Online session codes</strong> expire automatically within 24 hours or immediately when a game ends.</li>
+          <li><strong>Leaderboard data</strong> (avatar name, wins, scores, bid history) is stored on Firebase Firestore servers indefinitely to maintain all-time rankings. Game log entries are limited to the 50 most recent games. To request deletion of your leaderboard data, contact us via the support details below.</li>
+          <li><strong>Anonymous auth token</strong> is stored on your device by Firebase and persists across app launches. It is removed when you uninstall the app.</li>
           <li>You can remove all locally stored data at any time by deleting the app from your device.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Section 8 - Game Modes -->
+    <!-- Section 8 -->
     <section>
       <div class="section-header">
         <div class="section-number">8</div>
         <h2>Game Modes &amp; Data</h2>
       </div>
       <div class="card">
-        <p>The Shady Spade offers three game modes, each with different data implications:</p>
+        <p>The Shady Spade offers multiple game modes, each with different data implications:</p>
         <ul>
-          <li><strong>Solo Mode:</strong> Play against 5 AI opponents entirely on your device. No data leaves your device. No internet connection required.</li>
-          <li><strong>Online Mode:</strong> Play with 6 real players over the internet. Firebase syncs game state using only avatar names and game actions — no personal data.</li>
-          <li><strong>Custom Game (Hot Seat):</strong> Multiple humans share one device, passing it between turns. Completely private — no data leaves your device.</li>
-          <li><strong>Custom Game (Online):</strong> Mix of human and AI players connecting remotely via session code. Same Firebase usage as Online Mode applies.</li>
+          <li><strong>Solo Mode:</strong> Play against 5 AI opponents on your device. No game sync data leaves your device. Leaderboard stats are recorded to Firebase at game end.</li>
+          <li><strong>Online Mode:</strong> Play with real players over the internet. Firebase syncs game state using only avatar names and game actions. Leaderboard stats recorded at game end.</li>
+          <li><strong>Multiplayer (Hot Seat):</strong> Multiple humans share one device, passing it between turns. No game sync data leaves your device. Leaderboard stats recorded at game end.</li>
+          <li><strong>Multiplayer (Online):</strong> Mix of human and AI players connecting remotely via session code. Same Firebase usage as Online Mode applies.</li>
         </ul>
       </div>
     </section>
@@ -456,19 +447,20 @@
         <h2>Your Rights</h2>
       </div>
       <div class="card">
-        <p>Because we collect minimal data and store it locally on your device, you have full control:</p>
+        <p>Because we collect minimal data and store most of it locally on your device, you have full control:</p>
         <ul>
           <li>You can change your avatar name and avatar at any time within the app</li>
-          <li>You can delete all app data by uninstalling The Shady Spade from your device</li>
-          <li>You can play in Solo Mode or Custom Game (hot seat) at any time without any data leaving your device</li>
+          <li>You can delete all local app data by uninstalling The Shady Spade from your device</li>
+          <li>You can request deletion of your leaderboard data by contacting us at the details below</li>
+          <li>You can play in Solo Mode at any time — leaderboard stats will still be recorded at game end using your chosen avatar name</li>
         </ul>
       </div>
     </section>
 
-    <!-- Section 9 -->
+    <!-- Section 10 -->
     <section>
       <div class="section-header">
-        <div class="section-number">9</div>
+        <div class="section-number">10</div>
         <h2>Changes to This Policy</h2>
       </div>
       <div class="card">
@@ -492,7 +484,7 @@
     <footer>
       <p class="gold">♠ The Shady Spade</p>
       <p>© 2026 The Shady Spade. All rights reserved.</p>
-      <p style="margin-top: 8px;">Effective Date: March 17, 2026</p>
+      <p style="margin-top: 8px;">Effective Date: March 20, 2026</p>
     </footer>
 
   </div>
