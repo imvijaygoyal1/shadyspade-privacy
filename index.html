@@ -276,13 +276,13 @@
       <span class="spade-icon">♠</span>
       <h1>Privacy Policy</h1>
       <p class="subtitle">The Shady Spade — Card Game App</p>
-      <span class="last-updated">Last Updated: April 5, 2026</span>
+      <span class="last-updated">Last Updated: April 16, 2026</span>
     </header>
 
     <!-- Quick Summary -->
     <div class="summary-banner">
       <h2>The Short Version</h2>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0;">We built The Shady Spade to be played, not to collect your data. Here's what that means:</p>
+      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0;">We built The Shady Spade to be played, not to collect your data. Here's what that means in v1.6:</p>
       <div class="summary-grid">
         <div class="summary-item">
           <span class="icon">🚫</span>
@@ -331,7 +331,9 @@
           <li><strong>Global Leaderboard:</strong> When a game completes, your chosen avatar name, wins, games played, bid history, scores, and gameplay results (bids made or set, points scored) are stored on Firebase Firestore servers to power the global leaderboard. This data is associated with your avatar name only — not your real name or any personal identifier.</li>
           <li><strong>Anonymous Device Token:</strong> The app uses Firebase Anonymous Authentication to secure leaderboard writes. A silent anonymous token is created on your device on first launch — no email, phone number, or personal information is required or collected.</li>
           <li><strong>App Preferences:</strong> Settings such as theme preference are stored locally using Apple's AppStorage on your device only.</li>
-          <li><strong>URL Scheme (shadyspade://):</strong> The app registers the <code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">shadyspade://</code> URL scheme to enable QR code joining for multiplayer games. No data is transmitted via this URL scheme beyond the room code.</li>
+          <li><strong>Camera Access (QR Scanning):</strong> The app requests camera permission when you use the QR code scanner to join an online game. The camera feed is processed entirely on-device by Apple's AVFoundation framework to read the QR code. No camera images or video are stored, transmitted, or shared. Camera access is only requested when you tap "Scan QR Code" and can be revoked at any time in iOS Settings.</li>
+          <li><strong>URL Scheme &amp; Universal Links:</strong> The app registers the <code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">shadyspade://</code> custom URL scheme and handles universal links at <code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">https://shadyspade-d6b84.web.app/shadyspade/join/{CODE}</code>. QR codes shared between players encode the full universal link URL. No data beyond the 6-character room code is transmitted via either mechanism.</li>
+          <li><strong>Local Network Access (TV Dashboard — Bluetooth Mode Only):</strong> When hosting a Bluetooth game, the app can optionally start a local web server on your device accessible within your Wi-Fi network. This server shares the current game state (player avatar names, scores, cards played, bid information) with any browser on the same local network, so it can be displayed on a TV. No data is sent to the internet. The server runs only while you are hosting a Bluetooth game and stops automatically when the game ends. You are shown the local URL and a QR code before any device connects.</li>
         </ul>
         <div class="highlight">
           <p>✅ We do <strong>not</strong> collect your real name, email address, phone number, location, contacts, photos, or any other personal data. Only your chosen in-game avatar name is used.</p>
@@ -348,13 +350,13 @@
       <div class="card">
         <p>The Shady Spade uses <strong>Google Firebase</strong> for two purposes: real-time game sessions and the global leaderboard.</p>
         <ul>
-          <li>Firebase is used to synchronise game state (cards played, scores, turn order) between players in the same session.</li>
+          <li>Firebase is used to synchronise game state (cards played, scores, turn order) between players in the same <strong>Online Mode</strong> session.</li>
           <li>Only your chosen <strong>avatar name</strong> and <strong>game actions</strong> are transmitted — never personal information.</li>
           <li>All session data is deleted from Firebase servers when the game session ends.</li>
           <li>Firebase may collect anonymous technical data such as crash reports and performance metrics as described in <a href="https://firebase.google.com/support/privacy" style="color: var(--gold);">Google's Privacy Policy</a>.</li>
-          <li>If you play in Solo Mode on a single device, Firebase is not used for game sync — however Firebase records leaderboard stats at game end in all modes.</li>
+          <li><strong>Solo, Bluetooth, and Pass &amp; Play modes</strong> do not use Firebase for game sync — however Firebase records leaderboard stats at game end in <em>all</em> modes (Solo, Online, Bluetooth, Pass &amp; Play).</li>
         </ul>
-        <p style="margin-top: 16px;">When a game completes, game result data is processed by <strong>Google Cloud Functions</strong> (us-central1 region) to validate scores server-side before writing to the leaderboard. This uses your avatar name, bid amount, and round results only. No personal data is transmitted.</p>
+        <p style="margin-top: 16px;">When a game completes in any mode, game result data is processed by <strong>Google Cloud Functions</strong> (us-central1 region) to validate scores server-side before writing to the leaderboard. This uses your avatar name, bid amount, and round results only. No personal data is transmitted. If your device is offline at the time, the record is queued locally and submitted automatically when connectivity is restored.</p>
       </div>
     </section>
 
@@ -369,9 +371,11 @@
         <ul>
           <li>Displaying your chosen avatar name and emoji during gameplay</li>
           <li>Connecting you to an online game session when you enter or share a session code</li>
+          <li>Reading a QR code via the camera to extract a room code (camera feed is never stored or transmitted)</li>
           <li>Remembering your app preferences between sessions</li>
           <li>Tracking scores within the current game session</li>
           <li>Displaying your game statistics on the global leaderboard</li>
+          <li>Displaying game state on a local-network TV dashboard when you opt in during Bluetooth host mode</li>
         </ul>
         <p>We do <strong>not</strong> use any information for advertising, analytics, profiling, or any purpose other than making the game work.</p>
       </div>
@@ -434,8 +438,8 @@
         <ul>
           <li><strong>Solo Mode:</strong> Play against 5 AI opponents on your device. No game sync data leaves your device. Leaderboard stats are recorded to Firebase at game end.</li>
           <li><strong>Online Mode:</strong> Play with real players over the internet. Firebase syncs game state using only avatar names and game actions. Leaderboard stats recorded at game end.</li>
-          <li><strong>Bluetooth Mode:</strong> Play with nearby players over a local Bluetooth/Wi-Fi connection using Apple's Multipeer Connectivity framework. No internet connection is required and no game data is sent to external servers during play. Leaderboard stats are recorded to Firebase at game end.</li>
-          <li><strong>Multiplayer (Hot Seat):</strong> Multiple humans share one device, passing it between turns. No game sync data leaves your device. Leaderboard stats recorded at game end.</li>
+          <li><strong>Bluetooth Mode:</strong> Play with nearby players over a local Bluetooth/Wi-Fi connection using Apple's Multipeer Connectivity framework. No internet connection is required and no game data is sent to external servers during play. Leaderboard stats are recorded to Firebase at game end. Optionally, the host device can share a live game-state dashboard on the local Wi-Fi network for display on a TV — see "Local Network Access" in Section 2.</li>
+          <li><strong>Pass &amp; Play (Hot Seat):</strong> Multiple humans share one device, passing it between turns. No game sync data leaves your device. Leaderboard stats recorded at game end.</li>
           <li><strong>Multiplayer (Online):</strong> Mix of human and AI players connecting remotely via session code. Same Firebase usage as Online Mode applies.</li>
         </ul>
       </div>
@@ -485,7 +489,7 @@
     <footer>
       <p class="gold">♠ The Shady Spade</p>
       <p>© 2026 The Shady Spade. All rights reserved.</p>
-      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: April 5, 2026</p>
+      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: April 16, 2026</p>
     </footer>
 
   </div>
