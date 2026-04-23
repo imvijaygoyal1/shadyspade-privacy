@@ -276,13 +276,13 @@
       <span class="spade-icon">♠</span>
       <h1>Privacy Policy</h1>
       <p class="subtitle">The Shady Spade — Card Game App</p>
-      <span class="last-updated">Last Updated: April 16, 2026</span>
+      <span class="last-updated">Last Updated: April 23, 2026</span>
     </header>
 
     <!-- Quick Summary -->
     <div class="summary-banner">
       <h2>The Short Version</h2>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0;">We built The Shady Spade to be played, not to collect your data. Here's what that means in v1.6:</p>
+      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0;">We built The Shady Spade to be played, not to collect your data. Here's what that means:</p>
       <div class="summary-grid">
         <div class="summary-item">
           <span class="icon">🚫</span>
@@ -355,6 +355,7 @@
           <li>All session data is deleted from Firebase servers when the game session ends.</li>
           <li>Firebase may collect anonymous technical data such as crash reports and performance metrics as described in <a href="https://firebase.google.com/support/privacy" style="color: var(--gold);">Google's Privacy Policy</a>.</li>
           <li><strong>Solo, Bluetooth, and Pass &amp; Play modes</strong> do not use Firebase for game sync — however Firebase records leaderboard stats at game end in <em>all</em> modes (Solo, Online, Bluetooth, Pass &amp; Play).</li>
+          <li><strong>Monthly leaderboard archiving:</strong> At the start of each calendar month, a scheduled Cloud Function automatically archives the previous month's leaderboard data (avatar names, win counts, scores, and game log entries) into a historical snapshot collection on Firebase Firestore. This archive is used to preserve all-time statistics and is not shared with any third party. You may request deletion of both live and archived data by contacting us.</li>
         </ul>
         <p style="margin-top: 16px;">When a game completes in any mode, game result data is processed by <strong>Google Cloud Functions</strong> (us-central1 region) to validate scores server-side before writing to the leaderboard. This uses your avatar name, bid amount, and round results only. No personal data is transmitted. If your device is offline at the time, the record is queued locally and submitted automatically when connectivity is restored.</p>
       </div>
@@ -420,7 +421,7 @@
           <li><strong>Avatar name and preferences</strong> are stored locally on your device using Apple's AppStorage and persist until you delete the app.</li>
           <li><strong>Game session data</strong> (scores, cards played) is held in memory only and is automatically erased when the app is closed.</li>
           <li><strong>Online session codes</strong> expire automatically within 24 hours or immediately when a game ends.</li>
-          <li><strong>Leaderboard data</strong> (avatar name, wins, scores, bid history) is stored on Firebase Firestore servers indefinitely to maintain all-time rankings. Game log entries are limited to the 50 most recent games. To request deletion of your leaderboard data, contact us via the support details below.</li>
+          <li><strong>Leaderboard data</strong> (avatar name, wins, scores, bid history) is stored on Firebase Firestore servers indefinitely to maintain all-time rankings. Game log entries are limited to the 50 most recent games. At the start of each month, a Cloud Function archives the prior month's statistics into a historical snapshot — this archived data also persists indefinitely. To request deletion of both live and archived leaderboard data, contact us via the support details below.</li>
           <li><strong>Anonymous auth token</strong> is stored on your device by Firebase and persists across app launches. It is removed when you uninstall the app.</li>
           <li>You can remove all locally stored data at any time by deleting the app from your device.</li>
         </ul>
@@ -489,7 +490,7 @@
     <footer>
       <p class="gold">♠ The Shady Spade</p>
       <p>© 2026 The Shady Spade. All rights reserved.</p>
-      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: April 16, 2026</p>
+      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: April 23, 2026</p>
     </footer>
 
   </div>
