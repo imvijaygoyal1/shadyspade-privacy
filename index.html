@@ -276,7 +276,7 @@
       <span class="spade-icon">♠</span>
       <h1>Privacy Policy</h1>
       <p class="subtitle">The Shady Spade — Card Game App</p>
-      <span class="last-updated">Last Updated: April 23, 2026</span>
+      <span class="last-updated">Last Updated: May 31, 2026</span>
     </header>
 
     <!-- Quick Summary -->
@@ -422,6 +422,7 @@
           <li><strong>Game session data</strong> (scores, cards played) is held in memory only and is automatically erased when the app is closed.</li>
           <li><strong>Online session codes</strong> expire automatically within 24 hours or immediately when a game ends.</li>
           <li><strong>Leaderboard data</strong> (avatar name, wins, scores, bid history) is stored on Firebase Firestore servers indefinitely to maintain all-time rankings. Game log entries are limited to the 50 most recent games. At the start of each month, a Cloud Function archives the prior month's statistics into a historical snapshot — this archived data also persists indefinitely. To request deletion of both live and archived leaderboard data, contact us via the support details below.</li>
+          <li><strong>Pending leaderboard records</strong> are stored in an encrypted file protected by iOS Data Protection (<code style="font-family: monospace; font-size: 13px; color: var(--gold-light);">completeFileProtectionUnlessOpen</code>) when your device is offline. Records are flushed to Firebase automatically when connectivity is restored and deleted from the device once confirmed by the server.</li>
           <li><strong>Anonymous auth token</strong> is stored on your device by Firebase and persists across app launches. It is removed when you uninstall the app.</li>
           <li>You can remove all locally stored data at any time by deleting the app from your device.</li>
         </ul>
@@ -438,10 +439,9 @@
         <p>The Shady Spade offers multiple game modes, each with different data implications:</p>
         <ul>
           <li><strong>Solo Mode:</strong> Play against 5 AI opponents on your device. No game sync data leaves your device. Leaderboard stats are recorded to Firebase at game end.</li>
-          <li><strong>Online Mode:</strong> Play with real players over the internet. Firebase syncs game state using only avatar names and game actions. Leaderboard stats recorded at game end.</li>
+          <li><strong>Online Mode:</strong> Play with real players (and optionally AI-filled seats) over the internet using a session code. Firebase syncs game state using only avatar names and game actions. Leaderboard stats recorded at game end. You can start an Online session directly from the "New Game" screen by choosing 2 or more players.</li>
           <li><strong>Bluetooth Mode:</strong> Play with nearby players over a local Bluetooth/Wi-Fi connection using Apple's Multipeer Connectivity framework. No internet connection is required and no game data is sent to external servers during play. Leaderboard stats are recorded to Firebase at game end. Optionally, the host device can share a live game-state dashboard on the local Wi-Fi network for display on a TV — see "Local Network Access" in Section 2.</li>
           <li><strong>Pass &amp; Play (Hot Seat):</strong> Multiple humans share one device, passing it between turns. No game sync data leaves your device. Leaderboard stats recorded at game end.</li>
-          <li><strong>Multiplayer (Online):</strong> Mix of human and AI players connecting remotely via session code. Same Firebase usage as Online Mode applies.</li>
         </ul>
       </div>
     </section>
@@ -490,7 +490,7 @@
     <footer>
       <p class="gold">♠ The Shady Spade</p>
       <p>© 2026 The Shady Spade. All rights reserved.</p>
-      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: April 23, 2026</p>
+      <p style="margin-top: 8px;">Effective Date: March 22, 2026 · Last Revised: May 31, 2026</p>
     </footer>
 
   </div>
